@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding ensures all symbols and text render properly -->
+  <meta charset="UTF-8">
+
+  <!-- Mobile viewport tag makes the layout adjust to phone, tablet, and desktop screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Descriptive page title for browser tab and search engines -->
+  <title>FoodieExpress - Fast &amp; Delicious Food Delivered to Your Doorstep</title>
+
+  <!-- External Stylesheet: linking our pure CSS stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       ACCESSIBILITY: SKIP TO MAIN CONTENT LINK
+       This link helps keyboard and screen-reader users skip directly
+       to the main content without tabbing through every navigation link.
+       ========================================================= -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =========================================================
+       SECTION A: SITE HEADER & NAVIGATION BAR
+       Semantic <header> contains the brand logo, navigation links,
+       and a primary call-to-action button.
+       ========================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      
+      <!-- Brand Logo: clicking it returns to the top of the page -->
+      <a href="#home" class="logo">
+        <span class="logo-icon">🍲</span> Foodie<span class="logo-highlight">Express</span>
+      </a>
+
+      <!-- Semantic Navigation: aria-label clarifies the role for screen readers -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#categories" class="nav-link">Categories</a></li>
+          <li class="nav-item"><a href="#dishes" class="nav-link">Dishes</a></li>
+          <li class="nav-item"><a href="#restaurants" class="nav-link">Restaurants</a></li>
+          <li class="nav-item"><a href="#offers" class="nav-link">Offers</a></li>
+          <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Button: quick jump to the popular dishes section -->
+      <div class="header-action">
+        <a href="#dishes" class="btn btn-primary nav-order-btn">Order Now</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MAIN CONTENT WRAPPER
+       Semantic <main> tag identifies the central content of the document.
+       ========================================================= -->
+  <main id="main-content">
+
+    <!-- =======================================================
+         SECTION B: HERO SECTION (id="home")
+         Catches visitor attention with a headline, description,
+         a location search form (design only), and a hero graphic.
+         ======================================================= -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        
+        <!-- Hero Text & Search Box -->
+        <div class="hero-content">
+          <span class="hero-tagline">🚀 Fastest Food Delivery in Town</span>
+          <h1 class="hero-title">Delicious Food Delivered Warm To Your Doorstep</h1>
+          <p class="hero-description">
+            Craving something special? Discover mouth-watering dishes from the finest local restaurants,
+            cooked fresh and delivered to you in 30 minutes or less.
+          </p>
+
+          <!-- Search Form (Design Only: no backend needed for this assignment) -->
+          <form class="hero-search-form" action="#" method="get">
+            <!-- Visually hidden label satisfies accessibility without cluttering visual design -->
+            <label for="delivery-location" class="visually-hidden">Enter your delivery address</label>
+            <input 
+              type="text" 
+              id="delivery-location" 
+              name="location" 
+              class="search-input" 
+              placeholder="Enter your delivery location..." 
+              required
+            >
+            <button type="submit" class="btn btn-primary search-btn">Find Food</button>
+          </form>
+
+          <!-- Quick stats highlight trust and community size -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Restaurants</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">30 Mins</span>
+              <span class="stat-label">Avg Delivery</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4.8 ★</span>
+              <span class="stat-label">App Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Banner -->
+        <div class="hero-image-wrap">
+          <img 
+            src="images/hero-food.svg" 
+            alt="Colorful spread of freshly prepared pizza, burgers, biryani and beverages" 
+            class="hero-img"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION C: FOOD CATEGORIES (id="categories")
+         Displays at least 6 food category cards with images and titles.
+         ======================================================= -->
+    <section id="categories" class="categories-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-badge">Flavors</span>
+          <h2 class="section-title">Explore Food Categories</h2>
+          <p class="section-subtitle">Choose from a variety of cuisines to satisfy every craving.</p>
+        </div>
+
+        <!-- Categories Flexbox Row -->
+        <div class="categories-grid">
+
+          <!-- Category 1: Pizza -->
+          <article class="category-card card">
+            <img src="images/category-pizza.svg" alt="Hot oven-baked pizza slice with melting cheese" class="category-img">
+            <h3 class="category-title">Pizza</h3>
+            <p class="category-count">45+ Options</p>
+          </article>
+
+          <!-- Category 2: Burger -->
+          <article class="category-card card">
+            <img src="images/category-burger.svg" alt="Juicy grilled burger with cheese and lettuce" class="category-img">
+            <h3 class="category-title">Burger</h3>
+            <p class="category-count">30+ Options</p>
+          </article>
+
+          <!-- Category 3: Biryani -->
+          <article class="category-card card">
+            <img src="images/category-biryani.svg" alt="Aromatic spiced Hyderabadi Dum Biryani bowl" class="category-img">
+            <h3 class="category-title">Biryani</h3>
+            <p class="category-count">25+ Options</p>
+          </article>
+
+          <!-- Category 4: Desserts -->
+          <article class="category-card card">
+            <img src="images/category-dessert.svg" alt="Sweet chocolate cake and dessert pastries" class="category-img">
+            <h3 class="category-title">Desserts</h3>
+            <p class="category-count">20+ Options</p>
+          </article>
+
+          <!-- Category 5: Chinese -->
+          <article class="category-card card">
+            <img src="images/category-chinese.svg" alt="Spicy stir-fry Hakka noodles and dim sums" class="category-img">
+            <h3 class="category-title">Chinese</h3>
+            <p class="category-count">35+ Options</p>
+          </article>
+
+          <!-- Category 6: Drinks -->
+          <article class="category-card card">
+            <img src="images/category-drinks.svg" alt="Refreshing cold drinks, smoothies and thick shakes" class="category-img">
+            <h3 class="category-title">Drinks</h3>
+            <p class="category-count">18+ Options</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION D: POPULAR DISHES (id="dishes")
+         Shows at least 6 popular dishes with images, names,
+         descriptions, prices in ₹, and accessible order buttons.
+         ======================================================= -->
+    <section id="dishes" class="dishes-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-badge">Customer Favorites</span>
+          <h2 class="section-title">Popular Dishes</h2>
+          <p class="section-subtitle">Hand-picked dishes loved by thousands of hungry foodies every day.</p>
+        </div>
+
+        <!-- Dishes Flexbox Row -->
+        <div class="dishes-grid">
+
+          <!-- Dish 1: Margherita Pizza -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-pizza.svg" alt="Crispy thin crust Margherita pizza with fresh basil" class="dish-img">
+              <span class="badge dish-badge">Bestseller</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Margherita Basil Pizza</h3>
+              <p class="dish-desc">Authentic Italian thin-crust topped with San Marzano tomatoes, fresh mozzarella, and sweet basil leaves.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹299</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Margherita Basil Pizza for ₹299">Order</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 2: Crispy Cheese Burger -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-burger.svg" alt="Crispy chicken and cheese burger with toasted brioche bun" class="dish-img">
+              <span class="badge dish-badge">Top Rated</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Crispy Cheese Burger</h3>
+              <p class="dish-desc">Golden crisp seasoned patty stacked with melted yellow cheddar, crisp lettuce, pickles, and house secret sauce.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹189</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Crispy Cheese Burger for ₹189">Order</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 3: Hyderabadi Dum Biryani -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-biryani.svg" alt="Dum cooked Hyderabadi biryani with saffron rice and tender spices" class="dish-img">
+              <span class="badge dish-badge">Must Try</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Hyderabadi Dum Biryani</h3>
+              <p class="dish-desc">Slow-cooked fragrant long-grain basmati rice infused with aromatic royal spices, served with fresh cooling raita.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹349</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Hyderabadi Dum Biryani for ₹349">Order</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 4: Sizzling Choco Brownie -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-brownie.svg" alt="Warm chocolate walnut brownie with hot fudge sauce" class="dish-img">
+              <span class="badge dish-badge">Sweet Deal</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Choco Fudge Brownie</h3>
+              <p class="dish-desc">Rich Belgian dark chocolate brownie loaded with toasted walnuts and covered with warm bubbling choco fudge.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹149</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Choco Fudge Brownie for ₹149">Order</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 5: Veg Hakka Noodles -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-noodles.svg" alt="Wok-tossed Hakka noodles with bell peppers, cabbage and scallions" class="dish-img">
+              <span class="badge dish-badge">Spicy</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Hakka Chilli Noodles</h3>
+              <p class="dish-desc">Wok-tossed noodles stirred with crispy bell peppers, shredded cabbage, spring onions, garlic, and fiery soy sauce.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹219</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Hakka Chilli Noodles for ₹219">Order</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 6: Alphonso Mango Shake -->
+          <article class="dish-card card">
+            <div class="dish-img-wrap">
+              <img src="images/dish-shake.svg" alt="Chilled creamy mango shake garnished with pistachio nuts" class="dish-img">
+              <span class="badge dish-badge">Cooler</span>
+            </div>
+            <div class="dish-body">
+              <h3 class="dish-title">Alphonso Mango Shake</h3>
+              <p class="dish-desc">Made from 100% natural Alphonso mango pulp blended with rich chilled milk, vanilla cream, and crunchy pistachios.</p>
+              <div class="dish-footer">
+                <span class="dish-price">₹129</span>
+                <button type="button" class="btn btn-primary" aria-label="Order Alphonso Mango Shake for ₹129">Order</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION E: RESTAURANTS (id="restaurants")
+         Shows at least 4 restaurant cards with image, name,
+         cuisine type, rating, delivery time, and "View Menu" button.
+         ======================================================= -->
+    <section id="restaurants" class="restaurants-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-badge">Nearby Kitchens</span>
+          <h2 class="section-title">Top Rated Restaurants</h2>
+          <p class="section-subtitle">Partnered with the most hygienic and reputable kitchens in your neighborhood.</p>
+        </div>
+
+        <!-- Restaurants Flexbox Row -->
+        <div class="restaurants-grid">
+
+          <!-- Restaurant 1: Royal Biryani House -->
+          <article class="restaurant-card card">
+            <div class="restaurant-img-wrap">
+              <img src="images/restaurant-biryani.svg" alt="Storefront and feast of Royal Biryani House" class="restaurant-img">
+              <span class="badge badge-accent">Featured</span>
+            </div>
+            <div class="restaurant-body">
+              <div class="restaurant-header">
+                <h3 class="restaurant-name">Royal Biryani House</h3>
+                <span class="badge badge-rating">4.8 ★</span>
+              </div>
+              <p class="restaurant-cuisine">Mughlai • Hyderabadi • Kebabs</p>
+              <div class="restaurant-meta">
+                <span class="meta-item">⏱️ 25-30 mins</span>
+                <span class="meta-item">📍 2.4 km away</span>
+              </div>
+              <a href="#dishes" class="btn btn-outline" aria-label="View menu of Royal Biryani House">View Menu</a>
+            </div>
+          </article>
+
+          <!-- Restaurant 2: The Oven Story Pizza Co. -->
+          <article class="restaurant-card card">
+            <div class="restaurant-img-wrap">
+              <img src="images/restaurant-pizza.svg" alt="Artisan wood-fired oven of The Oven Story Pizza Co." class="restaurant-img">
+              <span class="badge badge-accent">Featured</span>
+            </div>
+            <div class="restaurant-body">
+              <div class="restaurant-header">
+                <h3 class="restaurant-name">The Oven Story Pizza Co.</h3>
+                <span class="badge badge-rating">4.6 ★</span>
+              </div>
+              <p class="restaurant-cuisine">Italian • Wood-fired Pizza • Pastas</p>
+              <div class="restaurant-meta">
+                <span class="meta-item">⏱️ 20-25 mins</span>
+                <span class="meta-item">📍 1.8 km away</span>
+              </div>
+              <a href="#dishes" class="btn btn-outline" aria-label="View menu of The Oven Story Pizza Co.">View Menu</a>
+            </div>
+          </article>
+
+          <!-- Restaurant 3: Burger Junction & Grill -->
+          <article class="restaurant-card card">
+            <div class="restaurant-img-wrap">
+              <img src="images/restaurant-burger.svg" alt="Burger Junction and Grill neon aesthetic and diner setting" class="restaurant-img">
+              <span class="badge badge-accent">Popular</span>
+            </div>
+            <div class="restaurant-body">
+              <div class="restaurant-header">
+                <h3 class="restaurant-name">Burger Junction &amp; Grill</h3>
+                <span class="badge badge-rating">4.5 ★</span>
+              </div>
+              <p class="restaurant-cuisine">American • Fast Food • Shakes &amp; Fries</p>
+              <div class="restaurant-meta">
+                <span class="meta-item">⏱️ 30-35 mins</span>
+                <span class="meta-item">📍 3.1 km away</span>
+              </div>
+              <a href="#dishes" class="btn btn-outline" aria-label="View menu of Burger Junction and Grill">View Menu</a>
+            </div>
+          </article>
+
+          <!-- Restaurant 4: Golden Dragon Wok -->
+          <article class="restaurant-card card">
+            <div class="restaurant-img-wrap">
+              <img src="images/restaurant-chinese.svg" alt="Golden Dragon Wok pan-Asian food and lanterns" class="restaurant-img">
+              <span class="badge badge-accent">Top Rated</span>
+            </div>
+            <div class="restaurant-body">
+              <div class="restaurant-header">
+                <h3 class="restaurant-name">Golden Dragon Wok</h3>
+                <span class="badge badge-rating">4.7 ★</span>
+              </div>
+              <p class="restaurant-cuisine">Pan-Asian • Dim Sums • Sichuan Bowls</p>
+              <div class="restaurant-meta">
+                <span class="meta-item">⏱️ 25-30 mins</span>
+                <span class="meta-item">📍 2.0 km away</span>
+              </div>
+              <a href="#dishes" class="btn btn-outline" aria-label="View menu of Golden Dragon Wok">View Menu</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION F: OFFERS & DEALS (id="offers")
+         Shows at least 3 promotional cards with discount details,
+         coupon codes, and "Claim Offer" buttons.
+         ======================================================= -->
+    <section id="offers" class="offers-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-badge">Big Savings</span>
+          <h2 class="section-title">Exciting Offers &amp; Discounts</h2>
+          <p class="section-subtitle">Save extra on every meal with these special promotional coupon codes.</p>
+        </div>
+
+        <!-- Offers Flexbox Row -->
+        <div class="offers-grid">
+
+          <!-- Offer 1: 50% Off First Order -->
+          <article class="offer-card card">
+            <span class="offer-pill">New User Special</span>
+            <h3 class="offer-title">50% OFF On Your First Order</h3>
+            <p class="offer-desc">Enjoy half price on your first three orders! Maximum discount up to ₹150.</p>
+            <div class="coupon-box">
+              <span class="coupon-label">Use Coupon:</span>
+              <strong class="coupon-code">WELCOME50</strong>
+            </div>
+            <button type="button" class="btn btn-primary" aria-label="Claim offer with coupon code WELCOME50">Claim Offer</button>
+          </article>
+
+          <!-- Offer 2: Free Delivery -->
+          <article class="offer-card card">
+            <span class="offer-pill">Daily Deal</span>
+            <h3 class="offer-title">Free Delivery Above ₹299</h3>
+            <p class="offer-desc">Order lunch or dinner from any partner restaurant and pay zero delivery fee.</p>
+            <div class="coupon-box">
+              <span class="coupon-label">Use Coupon:</span>
+              <strong class="coupon-code">FREEDEL</strong>
+            </div>
+            <button type="button" class="btn btn-primary" aria-label="Claim offer with coupon code FREEDEL">Claim Offer</button>
+          </article>
+
+          <!-- Offer 3: Flat ₹100 Cashback -->
+          <article class="offer-card card">
+            <span class="offer-pill">Weekend Binge</span>
+            <h3 class="offer-title">Flat ₹100 OFF On Combos</h3>
+            <p class="offer-desc">Get instant ₹100 discount on all family meal combos and party platters above ₹599.</p>
+            <div class="coupon-box">
+              <span class="coupon-label">Use Coupon:</span>
+              <strong class="coupon-code">FEAST100</strong>
+            </div>
+            <button type="button" class="btn btn-primary" aria-label="Claim offer with coupon code FEAST100">Claim Offer</button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION G: HOW IT WORKS (id="how-it-works")
+         Simple 3-step breakdown showing how FoodieExpress operates:
+         1. Choose  ->  2. Order  ->  3. Enjoy
+         ======================================================= -->
+    <section id="how-it-works" class="how-it-works-section">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <span class="section-badge">Simple &amp; Easy</span>
+          <h2 class="section-title">How FoodieExpress Works</h2>
+          <p class="section-subtitle">Three easy steps to satisfy your hunger in no time.</p>
+        </div>
+
+        <!-- Steps Flexbox Row -->
+        <div class="steps-grid">
+
+          <!-- Step 1: Choose Food -->
+          <article class="step-card card">
+            <div class="step-icon-wrap">
+              <img src="images/step-choose.svg" alt="Illustration representing browsing food menu" class="step-icon">
+              <span class="step-number">1</span>
+            </div>
+            <h3 class="step-title">Choose Your Meal</h3>
+            <p class="step-desc">Browse through dozens of curated menus, read ratings, and pick your favorite dish.</p>
+          </article>
+
+          <!-- Step 2: Place Order -->
+          <article class="step-card card">
+            <div class="step-icon-wrap">
+              <img src="images/step-order.svg" alt="Illustration representing fast online checkout" class="step-icon">
+              <span class="step-number">2</span>
+            </div>
+            <h3 class="step-title">Order &amp; Pay Easily</h3>
+            <p class="step-desc">Enter your delivery address and pay securely with UPI, cards, or Cash on Delivery.</p>
+          </article>
+
+          <!-- Step 3: Enjoy Food -->
+          <article class="step-card card">
+            <div class="step-icon-wrap">
+              <img src="images/step-enjoy.svg" alt="Illustration representing swift doorstep delivery" class="step-icon">
+              <span class="step-number">3</span>
+            </div>
+            <h3 class="step-title">Enjoy Fresh Delivery</h3>
+            <p class="step-desc">Our delivery partner arrives at your door with steaming hot, fresh, sealed food.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       SECTION H: FOOTER
+       Contains brand information, quick site links, contact
+       details, copyright notice, and a "Back to top" link.
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Footer Columns: Flexbox layout -->
+      <div class="footer-grid">
+
+        <!-- Column 1: Brand Info -->
+        <div class="footer-col footer-brand-col">
+          <a href="#home" class="logo footer-logo">
+            <span class="logo-icon">🍲</span> Foodie<span class="logo-highlight">Express</span>
+          </a>
+          <p class="footer-about">
+            FoodieExpress is your trusted neighborhood food delivery service bringing fresh, hot, and hygienic
+            meals directly from top restaurants to your dining table.
+          </p>
+          <p class="footer-tagline">Happiness delivered in every bite!</p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Food Categories</a></li>
+            <li><a href="#dishes">Popular Dishes</a></li>
+            <li><a href="#restaurants">Top Restaurants</a></li>
+            <li><a href="#offers">Special Offers</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact & Support -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Contact Us</h3>
+          <address class="footer-contact">
+            <p class="contact-item">📍 404 Tech Park, Sector 5, Bangalore, India</p>
+            <p class="contact-item">📞 +91 98765 43210</p>
+            <p class="contact-item">✉️ support@foodieexpress.com</p>
+            <p class="contact-item">⏰ Mon - Sun: 8:00 AM - 11:30 PM</p>
+          </address>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar: Copyright & Back To Top -->
+      <div class="footer-bottom">
+        <p class="copyright-text">&copy; 2026 FoodieExpress. Built with pure HTML &amp; CSS. All rights reserved.</p>
+        <a href="#home" class="back-to-top" aria-label="Scroll back to top of the page">Back to top &uarr;</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

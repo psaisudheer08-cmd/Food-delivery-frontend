@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad)" rx="16" />
+  <circle cx="100" cy="84" r="48" fill="#ffffff" opacity="0.9" filter="url(#shadow)" />
+  <text x="50%" y="94" font-family="system-ui, -apple-system, sans-serif" font-size="44px" text-anchor="middle" dominant-baseline="middle">💳</text>
+  <text x="50%" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="16px" font-weight="700" fill="#ffffff" text-anchor="middle">2. Order</text>
+  
+</svg>

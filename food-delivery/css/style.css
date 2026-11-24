@@ -1,0 +1,1076 @@
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ==========================================================================
+   1. CSS VARIABLES (DESIGN TOKENS)
+   2. CSS RESET & BASE STYLES
+   3. ACCESSIBILITY UTILITIES
+   4. REUSABLE COMPONENTS (Buttons, Badges, Cards, Section Headers)
+   5. HEADER & NAVIGATION BAR
+   6. HERO SECTION
+   7. FOOD CATEGORIES SECTION
+   8. POPULAR DISHES SECTION
+   9. RESTAURANTS SECTION
+   10. OFFERS & DEALS SECTION
+   11. HOW IT WORKS SECTION
+   12. FOOTER SECTION
+   13. RESPONSIVE DESIGN (Media Queries: Tablet & Mobile)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS VARIABLES (DESIGN TOKENS)
+   We store our primary colors, typography, shadows, and spacing here.
+   If you ever want to rebrand the website, change these values in one place!
+   ========================================================================== */
+:root {
+  /* Brand Palette (Warm, Appetizing & WCAG AA Accessible) */
+  --primary-color: #c2410c;       /* Rich burnt orange - 5.17:1 contrast with white */
+  --primary-hover: #9a3412;       /* Darker orange for button hover states */
+  --primary-light: #fff7ed;       /* Very soft warm tint for highlights */
+  --accent-color: #15803d;        /* Fresh green for ratings and positive badges */
+  --accent-light: #f0fdf4;        /* Light mint tint for badge backgrounds */
+
+  /* Neutral Colors */
+  --text-color: #1e293b;          /* Dark slate for crystal-clear readability */
+  --text-muted: #475569;          /* Medium slate for secondary captions and subtitles */
+  --bg-light: #ffffff;            /* Pure white background for alternating sections */
+  --bg-alt: #f8fafc;              /* Crisp light-gray for alternating sections */
+  --border-color: #e2e8f0;        /* Subtle border line for cards and inputs */
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Card Shadows and Border Radius */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 10px 22px rgba(194, 65, 12, 0.15);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Smooth Transition Duration */
+  --transition-speed: 0.25s;
+}
+
+
+/* ==========================================================================
+   2. CSS RESET & BASE STYLES
+   Ensures consistent layout behavior across Chrome, Firefox, Safari and Edge.
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scrolling when users click internal navigation anchors (#categories, etc.) */
+  scroll-behavior: smooth;
+  font-size: var(--font-size-base);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-light);
+  line-height: var(--line-height-base);
+  /* Prevents horizontal scrollbars */
+  overflow-x: hidden;
+}
+
+/* Fluid responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove default list styles */
+ul {
+  list-style: none;
+}
+
+/* Base anchor styles */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-speed) ease;
+}
+
+/* Base button and input font reset */
+button,
+input {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+
+/* ==========================================================================
+   3. ACCESSIBILITY UTILITIES
+   Ensures the website is fully accessible to keyboard and screen-reader users.
+   ========================================================================== */
+
+/* Skip Link: Visible only when focused via keyboard Tab key */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 1000;
+  transition: top var(--transition-speed) ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Visually Hidden: Hides text visually while leaving it readable for screen-readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High-visibility focus indicator for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   4. REUSABLE COMPONENTS
+   Reusable building blocks that give the site a unified look and feel.
+   ========================================================================== */
+
+/* Page Container: Limits maximum width on ultra-wide screens and centers content */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* General Section Spacing: Alternates light and light-gray backgrounds */
+.hero-section,
+.dishes-section,
+.how-it-works-section {
+  background-color: var(--bg-light);
+  padding: 70px 0;
+}
+
+.categories-section,
+.restaurants-section,
+.offers-section {
+  background-color: var(--bg-alt);
+  padding: 70px 0;
+}
+
+/* Section Header Typography */
+.section-header {
+  margin-bottom: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-badge {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reusable Card Base: Soft border, background, and gentle hover elevation */
+.card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Reusable Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Reusable Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+
+.badge-rating {
+  background-color: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.badge-accent {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+
+/* ==========================================================================
+   5. HEADER & NAVIGATION BAR
+   Flexbox layout placing logo on the left, links in center, and CTA on right.
+   ========================================================================== */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  gap: 20px;
+}
+
+/* Brand Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+}
+
+.logo-highlight {
+  color: var(--primary-color);
+}
+
+/* Navigation Links */
+.main-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+  padding: 6px 4px;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-order-btn {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   6. HERO SECTION
+   Two-column flexbox banner: headline & search on left, illustration on right.
+   ========================================================================== */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-content {
+  flex: 1 1 50%;
+}
+
+.hero-tagline {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+/* Search Form (Flexbox Row) */
+.hero-search-form {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 6px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  outline: none;
+  color: var(--text-color);
+}
+
+.search-btn {
+  flex: 0 0 auto;
+  padding: 12px 24px;
+}
+
+/* Quick Trust Stats */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hero-image-wrap {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--radius-lg);
+}
+
+
+/* ==========================================================================
+   7. FOOD CATEGORIES SECTION
+   Flexbox row showing 6 category cards with icons and counts.
+   ========================================================================== */
+.categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.category-card {
+  flex: 0 0 calc((100% - 100px) / 6);
+  padding: 20px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.category-img {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.category-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.category-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   8. POPULAR DISHES SECTION
+   Flexbox layout with 3 dishes per row on desktop (3x2 = 6 dishes).
+   ========================================================================== */
+.dishes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.dish-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dish-img-wrap {
+  position: relative;
+  background-color: var(--bg-alt);
+}
+
+.dish-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.dish-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.dish-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.dish-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.dish-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex: 1 1 auto;
+}
+
+.dish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.dish-price {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+
+/* ==========================================================================
+   9. RESTAURANTS SECTION
+   Flexbox layout with 4 restaurant cards (4 per row on desktop).
+   ========================================================================== */
+.restaurants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.restaurant-card {
+  flex: 0 0 calc((100% - 72px) / 4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.restaurant-img-wrap {
+  position: relative;
+  background-color: var(--bg-alt);
+}
+
+.restaurant-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.restaurant-img-wrap .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.restaurant-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.restaurant-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.restaurant-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.restaurant-cuisine {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.restaurant-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  flex: 1 1 auto;
+}
+
+.restaurant-body .btn {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   10. OFFERS & DEALS SECTION
+   Flexbox layout showing 3 discount vouchers with coupon codes.
+   ========================================================================== */
+.offers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.offer-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 5px solid var(--primary-color);
+}
+
+.offer-pill {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+}
+
+.offer-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.offer-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  flex: 1 1 auto;
+}
+
+.coupon-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-alt);
+  border: 1px dashed var(--primary-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.coupon-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.coupon-code {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+.offer-card .btn {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   11. HOW IT WORKS SECTION
+   Flexbox row featuring 3 clean step-by-step guidance cards.
+   ========================================================================== */
+.steps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.step-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-icon-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.step-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-full);
+}
+
+.step-number {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: 2px solid #ffffff;
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   12. FOOTER SECTION
+   Dark slate footer with multi-column flexbox layout and copyright bar.
+   ========================================================================== */
+.site-footer {
+  background-color: #0f172a;       /* Deep slate background */
+  color: #cbd5e1;                  /* Light gray text for readable contrast */
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.footer-col {
+  flex: 1 1 200px;
+}
+
+.footer-brand-col {
+  flex: 2 1 320px;
+}
+
+.footer-logo {
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.footer-about {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #94a3b8;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.footer-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-contact .contact-item {
+  font-style: normal;
+  font-size: 0.92rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #334155;
+  font-size: 0.88rem;
+  color: #94a3b8;
+}
+
+.back-to-top {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   13. RESPONSIVE DESIGN (MEDIA QUERIES)
+   Media queries adapt the site gracefully across tablet and mobile screens.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. TABLET SCREENS (Around 768px and down)
+   - Stacks hero layout vertically.
+   - Adjusts cards to 2 per row (Dishes, Restaurants, Offers).
+   - Adjusts categories to 3 per row.
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Reduce general section padding for smaller screens */
+  .hero-section,
+  .categories-section,
+  .dishes-section,
+  .restaurants-section,
+  .offers-section,
+  .how-it-works-section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  /* Header wraps links neatly on tablet without JavaScript */
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .nav-list {
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* Hero: Stack text above image */
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-content {
+    flex: 1 1 100%;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-search-form {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-image-wrap {
+    flex: 1 1 100%;
+  }
+
+  .hero-img {
+    max-width: 380px;
+  }
+
+  /* Categories: 3 per row on tablet */
+  .category-card {
+    flex: 0 0 calc((100% - 40px) / 3);
+  }
+
+  /* Dishes: 2 per row on tablet */
+  .dish-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  /* Restaurants: 2 per row on tablet */
+  .restaurant-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  /* Offers: 2 per row on tablet, wrapping remaining */
+  .offer-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  /* How It Works: full width stacked or centered */
+  .step-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. MOBILE SCREENS (Around 480px and down)
+   - Single column (1 card per row = 100% width) for maximum readability.
+   - Header links wrap comfortably.
+   - Search input and button stack neatly for easy tap targets.
+   - Zero horizontal overflow down to 320px width.
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Tighter padding on phone screens */
+  .hero-section,
+  .categories-section,
+  .dishes-section,
+  .restaurants-section,
+  .offers-section,
+  .how-it-works-section {
+    padding: 40px 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  /* Header: Brand centered, nav links wrap compactly */
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list {
+    gap: 10px 14px;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.88rem;
+  }
+
+  /* Search Form: Stacks input above button for effortless thumb tapping */
+  .hero-search-form {
+    flex-direction: column;
+    border-radius: var(--radius-md);
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .search-input {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-btn {
+    width: 100%;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Hero Stats: Wrap if screen is narrow */
+  .hero-stats {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Categories: 2 per row on small phones */
+  .category-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+    padding: 16px 10px;
+  }
+
+  .category-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Cards stack 1 per row (100% width) */
+  .dish-card,
+  .restaurant-card,
+  .offer-card,
+  .step-card {
+    flex: 0 0 100%;
+  }
+
+  /* Footer Bottom: Stack text and back to top */
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
